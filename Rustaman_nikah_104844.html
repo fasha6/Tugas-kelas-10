@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+  <!--rustaman x ppl 1-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function Input() {
+        let bilangan1 = parseFloat(document.getElementById("bil1").value);
+      let nikah = document.getElementById("nikah").value
+
+        if (bilangan1 > 17 || nikah === "ya" )
+       { alert("Anda memiliki hak pilih")}
+    else {alert("Anda tidak memiliki hak pilih")}
+        } //rustaman x ppl 1
+
+
+    </script>
+</head>
+<body>
+    <label for="umur">Umur :</label>
+    <input type="number" id="bil1" name="bil1" /> 
+    <br />
+    <label for="nikah">Status :</label>
+    <select id="nikah">
+      <option  value="ya">Menikah</option>
+      <option  value="jomblo">Belum menikah</option>
+     
+    </select>
+    <br />
+    <button onclick="Input()">Input</button>
+  </div>
+</body>
+</html>

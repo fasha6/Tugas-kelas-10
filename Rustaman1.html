@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Kalkulator</title>
+    <!-- Mengambil font dari Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Gaya untuk body */
+        body {
+            font-family: 'Roboto'; /* Mengatur font */
+            background-color: #f0f2f5; /* Warna latar belakang */
+            display: flex; /* Menggunakan flexbox untuk tata letak */
+            justify-content: center; /* Memusatkan konten secara horizontal */
+            align-items: center; /* Memusatkan konten secara vertikal */
+            min-height: 100vh; /* Minimal tinggi layar */
+            margin: 0 ; /* Menghilangkan margin */
+        }
+        
+        /* Gaya untuk kontainer */
+        .container {
+            background: #fff; /* Warna latar belakang kontainer */
+            padding: 2rem; /* Ruang di dalam kontainer */
+            border-radius: 8px; /* Sudut yang membulat */
+            box-shadow: 0 0 100px rgba(0, 0, 0, 0.1); /* Bayangan */
+            width: 100%; /* Lebar penuh */
+            max-width: 400px; /* Lebar maksimum */
+        }
+
+        /* Gaya untuk judul */
+        h2 {
+            font-weight: 700; /* Ketebalan font */
+            text-align: center; /* Rata tengah */
+            margin-bottom: 1.5rem; /* Jarak bawah */
+        }
+
+        /* Gaya untuk label */
+        label {
+            font-weight: 500; /* Ketebalan font */
+            margin-top: 1rem; /* Jarak atas */
+        }
+
+        /* Gaya untuk input angka */
+        input[type="number"] {
+            width: 100%; /* Lebar penuh */
+            padding: 0.75rem; /* Ruang di dalam input */
+            margin-top: 0.5rem; /* Jarak atas */
+            border-radius: 4px; /* Sudut yang membulat */
+            border: 1px solid #ccc; /* Border */
+            margin-bottom: 1rem; /* Jarak bawah */
+        }
+
+        /* Gaya untuk dropdown */
+        select {
+            width: 100%; /* Lebar penuh */
+            padding: 0.75rem; /* Ruang di dalam dropdown */
+            margin-bottom: 1rem; /* Jarak bawah */
+            border-radius: 4px; /* Sudut yang membulat */
+            border: 1px solid #ccc; /* Border */
+        }
+
+        /* Gaya untuk tombol */
+        button {
+            width: 48%; /* Lebar tombol */
+            padding: 0.75rem; /* Ruang di dalam tombol */
+            background-color: #1999af; /* Warna latar belakang tombol */
+            color: #fff; /* Warna teks tombol */
+            border: none; /* Tanpa border */
+            border-radius: 4px; /* Sudut yang membulat */
+            font-weight: 700; /* Ketebalan font */
+            cursor: pointer; /* Kursor berubah saat hover */
+            margin-right: 4%; /* Jarak kanan */
+            transition: background-color 0.3s ease; /* Efek transisi pada hover */
+        }
+
+        /* Gaya untuk tombol terakhir (Clear) */
+
+
+        /* Gaya saat tombol dihover */
+        .satu:hover {
+            background-color: #0056b3; /* Warna saat hover */
+        }
+         .dua {
+            background-color: #c40a0a; /* Warna saat hover */
+        }
+        .dua:hover {
+            background-color: #1f1c1c; /* Warna saat hover */
+        }
+
+        /* Gaya untuk hasil operasi */
+        #hasil {
+            font-weight: bold; /* Ketebalan font */
+            margin-top: 1rem; /* Jarak atas */
+            display: block; /* Menampilkan sebagai blok */
+            text-align: center; /* Rata tengah */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>HTML Kalkulator</h2>
+        
+        <!-- Input untuk bilangan pertama -->
+        <label for="bil1">Bilangan 1:</label>
+        <input type="number" id="bil1" name="bil1"/>
+
+        <!-- Input untuk bilangan kedua -->
+        <label for="bil2" id="labelBil2">Bilangan 2:</label>
+        <input type="number" id="bil2" name="bil2" />
+
+        <!-- Dropdown untuk memilih operasi -->
+        <label for="operasi">Pilih Operasi:</label>
+        <select id="operasi" onchange="updateInputVisibility()">
+            <option value="penjumlahan">Penjumlahan</option>
+            <option value="pengurangan">Pengurangan</option>
+            <option value="perkalian">Perkalian</option>
+            <option value="pembagian">Pembagian</option>
+            <option value="eksponen">Eksponen</option>
+            <option value="modulus">Modulus</option>
+            
+        </select>
+
+        <!-- Tombol untuk melakukan operasi -->
+        <button class="satu" onclick="hitung()">Hitung</button> <!-- Tombol untuk menghitung hasil -->
+        <button class="dua" onclick="clearInputs()">Clear</button> <!-- Tombol untuk menghapus input -->
+
+        <!-- Tempat menampilkan hasil -->
+        <span id="hasil"></span>
+    </div>
+
+    <script>
+      // Fungsi untuk penjumlahan
+      function penjumlahan() {
+        let bilangan = parseFloat(document.getElementById("bil1").value); // Mengambil nilai bilangan 1
+        bilangan += parseFloat(document.getElementById("bil2").value); // Mengambil nilai bilangan 2
+        document.getElementById("hasil").innerHTML = bilangan; // Menghitung hasil
+      
+      }
+
+      // Fungsi untuk perkalian
+      function perkalian() {
+        let bilangan = parseFloat(document.getElementById("bil1").value);
+         bilangan *= parseFloat(document.getElementById("bil2").value);
+        document.getElementById("hasil").innerHTML = bilangan; // Menghitung hasil
+         
+        
+        
+      }
+
+      // Fungsi untuk pembagian
+      function pembagian() {
+        let bilangan = parseFloat(document.getElementById("bil1").value);
+         bilangan /= parseFloat(document.getElementById("bil2").value);
+         document.getElementById("hasil").innerHTML = bilangan; // Menghitung hasil
+        
+      }
+
+      // Fungsi untuk pengurangan
+      function pengurangan() {
+        let bilangan = parseFloat(document.getElementById("bil1").value);
+         bilangan -= parseFloat(document.getElementById("bil2").value);
+         document.getElementById("hasil").innerHTML = bilangan; // Menghitung hasil
+        
+      }
+
+      // Fungsi untuk eksponen
+      function eksponen() {
+        let bilangan = parseFloat(document.getElementById("bil1").value);
+         bilangan **= parseFloat(document.getElementById("bil2").value);
+         document.getElementById("hasil").innerHTML = bilangan; // Menghitung hasil
+        
+      }
+
+      // Fungsi untuk modulus
+      function modulus() {
+        let bilangan = parseFloat(document.getElementById("bil1").value);
+         bilangan %= parseFloat(document.getElementById("bil2").value);
+        document.getElementById("hasil").innerHTML = bilangan; // Menghitung hasil
+        
+      }
+
+      
+
+      // Fungsi untuk menghitung berdasarkan operasi yang dipilih
+      function hitung() {
+        let operasi = document.getElementById("operasi").value; // Mengambil operasi yang dipilih
+
+        // Menggunakan if-else untuk memanggil fungsi sesuai dengan operasi yang dipilih
+        if (operasi === "penjumlahan") {
+          penjumlahan(); // Panggil fungsi penjumlahan
+        } else if (operasi === "pengurangan") {
+          pengurangan(); // Panggil fungsi pengurangan
+        } else if (operasi === "perkalian") {
+          perkalian(); // Panggil fungsi perkalian
+        } else if (operasi === "pembagian") {
+          pembagian(); // Panggil fungsi pembagian
+        } else if (operasi === "eksponen") {
+          eksponen(); // Panggil fungsi eksponen
+        } else if (operasi === "modulus") {
+          modulus(); // Panggil fungsi modulus
+        } else if (operasi === "increment") {
+          increment(); // Panggil fungsi increment
+        } else if (operasi === "decrement") {
+          decrement(); // Panggil fungsi decrement
+        }
+      }
+
+      // Fungsi untuk menghapus input dan hasil
+      function clearInputs() {
+          document.getElementById("bil1").value = ''; // Menghapus bilangan 1
+          document.getElementById("bil2").value = ''; // Menghapus bilangan 2
+          document.getElementById("hasil").innerText = ''; // Menghapus hasil
+ // Memperbarui visibilitas input
+      }
+
+      // Fungsi untuk memperbarui visibilitas input berdasarkan operasi yang dipilih
+      function updateInputVisibility() {
+          const operasi = document.getElementById("operasi").value; // Mengambil operasi yang dipilih
+          const bil2Input = document.getElementById("bil2"); // Mengambil elemen input bilangan 2
+          const labelBil2 = document.getElementById("labelBil2"); // Mengambil label bilangan 2
+          
+          if (operasi === "increment" || operasi === "decrement") {
+              bil2Input.style.display = "none"; // Sembunyikan input bilangan 2
+              labelBil2.style.display = "none"; // Sembunyikan label bilangan 2
+          } else {
+              bil2Input.style.display = "block"; // Tampilkan input bilangan 2
+              labelBil2.style.display = "block"; // Tampilkan label bilangan 2
+          }
+      }
+    </script>
+</body>
+</html>

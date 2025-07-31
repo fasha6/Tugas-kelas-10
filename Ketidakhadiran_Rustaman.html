@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head> 
+  <!--rustaman x ppl 1-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function Input() {
+        let bilangan1 = parseFloat(document.getElementById("bil1").value);
+      let bilangan2 = parseFloat(document.getElementById("bil2").value);
+        if (bilangan1 < 75 && bilangan2 > 5)
+       { alert("Anda tidak lulus")}
+    else {alert("Anda lulus")}
+        } //rustaman x ppl 1
+    </script>
+</head>
+<body>
+    <label for="nilai">Nilai :</label>
+    <input type="number" id="bil1" name="bil1" /> 
+    <br />
+    <label for="hadir">Ketidakhadiran :</label>
+    <input type="number" id="bil2" name="bil2" /> 
+    <br />
+    <button onclick="Input()">Input</button>
+  </div>
+</body>
+</html>

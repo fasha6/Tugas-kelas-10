@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!--logo--> 
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<style>
+    @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+html {
+    overflow-x: hidden;
+}
+
+body.dark {
+    background: #0C0C1E;
+    color: #FBFBFB;
+}
+
+body {
+    background: #eee;
+    overflow-x: hidden;
+}
+
+#content nav {
+    height: 56px;
+    background: #F9F9F9;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    grid-gap: 290px;
+    font-family: 'Lato', sans-serif;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+#content nav::before {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    bottom: -40px;
+    left: 0;
+    border-radius: 50%;
+    box-shadow: -20px -20px 0 #F9F9F9;
+}
+
+#content nav::after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    bottom: -40px;
+    right: 0;
+    border-radius: 50%;
+    box-shadow: 20px -20px 0 #F9F9F9;
+}
+
+#content nav a {
+    color: #342E37;
+}
+
+#content nav .profile img {
+    width: 36px;
+    height: 36px;
+    object-fit: cover;
+    border-radius: 50%;
+    flex: 1;
+}
+
+#content main {
+    width: 100%;
+    padding: 36px 24px;
+    font-family: 'Poppins', sans-serif;
+    max-height: calc(100vh - 56px);
+    overflow-y: auto;
+}
+
+#content main .head-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    grid-gap: 16px;
+    flex-wrap: wrap;
+}
+
+#content main .head-title .left h1 {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #342E37;
+}
+
+#content main .head-title .left .breadcrumb {
+    display: flex;
+    align-items: center;
+    grid-gap: 16px;
+}
+
+#content main .box-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-gap: 24px;
+    margin-top: 36px;
+}
+
+#content main .box-info li {
+    padding: 24px;
+    background: #F9F9F9;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    grid-gap: 24px;
+}
+
+#content main .box-info li .bx {
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    font-size: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#content main .box-info li:nth-child(1) .bx {
+    background: #CFE8FF;
+    color: #3C91E6;
+}
+
+#content main .box-info li .text h3 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #342E37;
+}
+
+#content main .box-info li .text p {
+    color: #342E37;
+}
+
+#content main .table-data {
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 24px;
+    margin-top: 24px;
+    width: 100%;
+    color: #342E37;
+}
+
+#content main .table-data > div {
+    border-radius: 20px;
+    background: #F9F9F9;
+    padding: 26px;
+    overflow-x: auto;
+}
+
+#content main .table-data .head {
+    display: flex;
+    align-items: center;
+    grid-gap: 16px;
+    margin-bottom: 24px;
+}
+
+#content main .table-data .head h3 {
+    margin-right: auto;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+#content main .table-data .head .bx {
+    cursor: pointer;
+}
+
+#content main .table-data .order {
+    flex-grow: 1;
+    flex-basis: 500px;
+}
+
+#content main .table-data .order table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#content main .table-data .order table th {
+    padding-bottom: 12px;
+    font-size: 13px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+#content main .table-data .order table td {
+    padding: 16px 12px;
+}
+
+#content main .table-data .order table tr td:first-child {
+    display: flex;
+    font-weight: bold;
+    align-items: center;
+    grid-gap: 12px;
+    padding-left: 6px;
+}
+
+#content main .table-data .order table td img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+#content main .table-data .order table tbody tr:hover {
+    background: #eee;
+}
+
+#content main .table-data .order table tr td .status {
+    font-size: 10px;
+    padding: 6px 16px;
+    color: #F9F9F9;
+    border-radius: 20px;
+    font-weight: 700;
+}
+
+#content main .table-data .order table tr td .status.completed {
+    background: #3C91E6;
+    box-shadow: 0px 0px 13px #3C91E6;
+}
+
+#content main .table-data .order table tr td .status.process {
+    background: #FFCE26;
+    box-shadow: 0px 0px 13px #FFCE26;
+}
+
+#content main .table-data .order table tr td .status.pending {
+    background: #FD7238;
+    box-shadow: 0px 0px 13px #FD7238;
+}
+
+
+#content main .table-data .order table tr td .status.unknown {
+
+    background: #000000;
+    box-shadow: 0px 0px 13px #000000;
+}
+</style>
+
+
+	<title>Kelola Admin</title>
+</head>
+<body>
+	<section id="content">
+		
+		<nav>
+			<i class='bx bx-menu' ></i>
+			<a href="https://iamhealthy.eu.org/login" class="profile">
+				<img src="https://raw.githubusercontent.com/Rustaman1280/Form/refs/heads/master/img/people.png">
+			</a>
+		</nav>
+<main>
+    <div class="head-title">
+        <div class="left">
+            <h1>Daftar Siswa X PPL 1</h1>
+            <ul class="breadcrumb">
+                <li>
+                    <a href="#">Dashboard</a>
+                </li>
+                <li><i class='bx bx-chevron-right' ></i></li>
+                <li>
+                    <a class="active" href="#">Daftar Siswa</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <ul class="box-info">
+        <li>
+            <i class='bx bxs-group' ></i>
+            <span class="text">
+                <h3>36</h3>
+                <p>Siswa</p>
+            </span>
+        </li>
+
+    </ul>
+
+
+    <div class="table-data">
+        <div class="order">
+            <div class="head">
+                <h3>Daftar Siswa</h3>
+                <i class='bx bx-plus' onclick="hitung()" ></i>
+                <i class='bx bx-filter' ></i>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nama Lengkap</th>
+                        <th>Username</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+<td>
+<img src="https://raw.githubusercontent.com/Rustaman1280/Form/refs/heads/master/img/people.png">
+<p>Aghry Adryanto</p>
+</td>
+<td>aghryang_ang</td>
+<td><span class="status completed">Completed</span></td>
+</tr>
+<tr>
+<td>
+<img src="https://raw.githubusercontent.com/Rustaman1280/Form/refs/heads/master/img/people.png">
+<p>Ana Nasrulloh</p>
+</td>
+<td>anaprojen</td>
+<td><span class="status pending">Pending</span></td>
+</tr>
+<tr>
+<td>
+<img src="https://raw.githubusercontent.com/Rustaman1280/Form/refs/heads/master/img/people.png">
+<p>Aulia Novia Shuandhari</p>
+</td>
+<td>auljj99</td>
+<td><span class="status process">Process</span></td>
+</tr>
+<tr>
+<td>
+<img src="https://raw.githubusercontent.com/Rustaman1280/Form/refs/heads/master/img/people.png">
+<p>Bagja Sastra Atmanagara</p>
+</td>
+<td>bangjuyy</td>
+<td><span class="status completed">Completed</span></td>
+</tr>
+<tr>
+<td>
+<img src="https://raw.githubusercontent.com/Rustaman1280/Form/refs/heads/master/img/people.png">
+<p>Dhiyyaa'ali Malik Dzulfikar</p>
+</td>
+<td>dhiyyaaaa</td>
+<td><span class="status pending">Pending</span></td>
+</tr>
+<tr>
+<td>
+<img src="https://raw.githubusercontent.com/Rustaman1280/Form/refs/heads/master/img/people.png">
+<p>Fahri Firmansyah</p>
+</td>
+<td>ikanpari</td>
+<td><span class="status process">Process</span></td>
+</tr>
+<tr>
+<td>
+<img src="https://raw.githubusercontent.com/Rustaman1280/Form/refs/heads/master/img/people.png">
+<p>Ferdiansyah</p>
+</td>
+<td>ukerslebew</td>
+<td><span class="status completed">Completed</span></td>
+</tr>
+<tr>
+<td>
+<img src="https://raw.githubusercontent.com/Rustaman1280/Form/refs/heads/master/img/people.png">
+<p>Finsa Angga Ramadhan</p>
+</td>
+<td>ipin12</td>
+<td><span class="status pending">Pending</span></td>
+</tr>
+<tr>
+<td>
+<img src="https://raw.githubusercontent.com/Rustaman1280/Form/refs/heads/master/img/people.png">
+<p>Galih Adil Darmawan</p>
+</td>
+<td>xiaoshuu</td>
+<td><span class="status completed">Completed</span></td>
+</tr>
+<tr>
+<td>
+<img src="https://raw.githubusercontent.com/Rustaman1280/Form/refs/heads/master/img/people.png">
+<p>Gazlan Hazieq El Akbar</p>
+</td>
+<td>gazafreedom</td>
+<td><span class="status process">Prosess</span></td>
+</tr>
+<tr>
+<td>
+<img src="https://raw.githubusercontent.com/Rustaman1280/Form/refs/heads/master/img/people.png">
+<p>Haura Salsabil</p>
+</td>
+<td>haurajaemin</td>
+<td><span class="status process">Process</span></td>
+</tr>
+<tr>
+<td>
+<img src="https://raw.githubusercontent.com/Rustaman1280/Form/refs/heads/master/img/people.png">
+<p>Ibnu Farrel Hermawan</p>
+</td>
+<td>farrel2</td>
+<td><span class="status completed">Completed</span></td>
+</tr>
+<tr>
+<td>
+<img src="https://raw.githubusercontent.com/Rustaman1280/Form/refs/heads/master/img/people.png">
+<p>Jenisa Nurfadillah</p>
+</td>
+<td>jeniannn</td>
+<td><span class="status pending">Pending</span></td>
+</tr>
+<tr>
+<td>
+<img src="https://raw.githubusercontent.com/Rustaman1280/Form/refs/heads/master/img/people.png">
+<p>Kahvi Rizky Hardiansyah</p>
+</td>
+<td>kahvrzky</td>
+<td><span class="status process">Process</span></td>
+</tr>
+<tr>
+<td>
+<img src="https://raw.githubusercontent.com/Rustaman1280/Form/refs/heads/master/img/people.png">
+<p>M Gibran Rasyad Bais Sukmana</p>
+</td>
+<td>gibran_<</td>
+<td><span class="status completed">Completed</span></td>
+</tr>
+<tr>
+<td>
+<img src="https://raw.githubusercontent.com/Rustaman1280/Form/refs/heads/master/img/people.png">
+<p>Mochamad Hamby Alfarizi</p>
+</td>
+<td>hamblee23</td>
+<td><span class="status pending">Pending</span></td>
+</tr>
+<tr>
+<td>
+<img src="https://raw.githubusercontent.com/Rustaman1280/Form/refs/heads/master/img/people.png">
+<p>Mochammad Arsy Zulfa Nur Safiq</p>
+</td>
+<td>arsyyy28</td>
+<td><span class="status process">Process</span></td>
+</tr>
+<tr>
+<td>
+<img src="https://raw.githubusercontent.com/Rustaman1280/Form/refs/heads/master/img/people.png">
+<p>Muhammad Fathir Akbarussalam</p>
+</td>
+<td>father02</td>
+<td><span class="status completed">Completed</span></td>
+</tr>
+<tr>
+<td>
+<img src="https://raw.githubusercontent.com/Rustaman1280/Form/refs/heads/master/img/people.png">
+<p>Muhammad Farel Nugraha</p>
+</td>
+<td>farel??</td>
+<td><span class="status pending">Pending</span></td>
+</tr>
+<tr>
+<td>
+<img src="https://raw.githubusercontent.com/Rustaman1280/Form/refs/heads/master/img/people.png">
+<p>Muhammad Fasha Pratama</p>
+</td>
+<td>martabak</td>
+<td><span class="status process">Process</span></td>
+</tr>
+<tr>
+<td>
+<img src="https://raw.githubusercontent.com/Rustaman1280/Form/refs/heads/master/img/people.png">
+<p>Muhammad Raffa Anugrah Sopa</p>
+</td>
+<td>sheraff</td>
+<td><span class="status completed">Completed</span></td>
+</tr>
+<tr>
+<td>
+<img src="https://raw.githubusercontent.com/Rustaman1280/Form/refs/heads/master/img/people.png">
+<p>Nafis Ikhsan</p>
+</td>
+<td>nafish09</td>
+<td><span class="status pending">Pending</span></td>
+</tr>
+<tr>
+<td>
+<img src="https://raw.githubusercontent.com/Rustaman1280/Form/refs/heads/master/img/people.png">
+<p>Rafi Rasyad Muhammad</p>
+</td>
+<td>talirafi02</td>
+<td><span class="status process">Process</span></td>
+</tr>
+<tr>
+<td>
+<img src="https://raw.githubusercontent.com/Rustaman1280/Form/refs/heads/master/img/people.png">
+<p>Raka Nurdiana</p>
+</td>
+<td>rakabuming02</td>
+<td><span class="status completed">Completed</span></td>
+</tr>
+<tr>
+<td>
+<img src="https://raw.githubusercontent.com/Rustaman1280/Form/refs/heads/master/img/people.png">
+<p>Regina Afriliani</p>
+</td>
+<td>reginaw03</td>
+<td><span class="status pending">Pending</span></td>
+</tr>
+<tr>
+<td>
+<img src="https://raw.githubusercontent.com/Rustaman1280/Form/refs/heads/master/img/people.png">
+<p>Rehan Alfaridzi</p>
+</td>
+<td>sigma23</td>
+<td><span class="status process">Process</span></td>
+</tr>
+<tr>
+<td>
+<img src="https://raw.githubusercontent.com/Rustaman1280/Form/refs/heads/master/img/people.png">
+<p>Riki Ruhikmat</p>
+</td>
+<td>rikawl12</td>
+<td><span class="status completed">Completed</span></td>
+</tr>
+<tr>
+<td>
+<img src="https://raw.githubusercontent.com/Rustaman1280/Form/refs/heads/master/img/people.png">
+<p>Rustaman Delvianova</p>
+</td>
+<td>kingofglory</td>
+<td><span class="status unknown">Unknown</span></td>
+</tr>
+<tr>
+<td>
+<img src="https://raw.githubusercontent.com/Rustaman1280/Form/refs/heads/master/img/people.png">
+<p>Salman Rohiman</p>
+</td>
+<td>salmonella</td>
+<td><span class="status process">Process</span></td>
+</tr>
+<tr>
+<td>
+<img src="https://raw.githubusercontent.com/Rustaman1280/Form/refs/heads/master/img/people.png">
+<p>Septian Ramadhan</p>
+</td>
+<td>rama69</td>
+<td><span class="status completed">Completed</span></td>
+</tr>
+<tr>
+<td>
+<img src="https://raw.githubusercontent.com/Rustaman1280/Form/refs/heads/master/img/people.png">
+<p>Shabrina Naffisah Ayyasy</p>
+</td>
+<td>shabi023</td>
+<td><span class="status pending">Pending</span></td>
+</tr>
+<tr>
+<td>
+<img src="https://raw.githubusercontent.com/Rustaman1280/Form/refs/heads/master/img/people.png">
+<p>Shela Pitriani</p>
+</td>
+<td>shelalaaa</td>
+<td><span class="status process">Process</span></td>
+</tr>
+<tr>
+<td>
+<img src="https://raw.githubusercontent.com/Rustaman1280/Form/refs/heads/master/img/people.png">
+<p>Shelly Muthia Azzahra</p>
+</td>
+<td>Muthiaa03</td>
+<td><span class="status completed">Completed</span></td>
+</tr>
+<tr>
+<td>
+<img src="https://raw.githubusercontent.com/Rustaman1280/Form/refs/heads/master/img/people.png">
+<p>Tristan Malika Zulkifli</p>
+</td>
+<td>3stan69</td>
+<td><span class="status pending">Pending</span></td>
+</tr>
+<tr>
+<td>
+<img src="https://raw.githubusercontent.com/Rustaman1280/Form/refs/heads/master/img/people.png">
+<p>Zaki Alghani Rachman</p>
+</td>
+<td>dope25</td>
+<td><span class="status process">Process</span></td>
+</tr>
+<tr>
+<td>
+<img src="https://raw.githubusercontent.com/Rustaman1280/Form/refs/heads/master/img/people.png">
+<p>Zefi Nurfadilah</p>
+</td>
+<td>zeffffff</td>
+<td><span class="status completed">Completed</span></td>
+</tr>
+
+                </tbody>
+            </table>
+        </div>
+      
+    </div>
+</main>
+</section>
+<script>
+ function hitung(){
+    alert("Anda tidak mempunyai otoritas untuk mengubah ini, silakan hubungi Rustaman untuk info lebih lanjut.")
+  }
+  
+</script>
+</body>
+</html>
+
